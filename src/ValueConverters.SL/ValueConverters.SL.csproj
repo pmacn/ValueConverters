@@ -66,10 +66,14 @@
     <Compile Include="..\ValueConverters.WPF\LinkedConverter.cs">
       <Link>LinkedConverter.cs</Link>
     </Compile>
-    <Compile Include="..\ValueConverters.WPF\ValueConverterAttribute.cs">
-      <Link>ValueConverterAttribute.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueConversionAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\externals\ReflectionExtensions\src\ReflectionExtensions.SL\ReflectionExtensions.SL.csproj">
+      <Project>{7b7a3be7-2fee-476e-9a3f-305f4ff487be}</Project>
+      <Name>ReflectionExtensions.SL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions>

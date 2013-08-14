@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Markup;
+using ReflectionExtensions;
+
 
 namespace ValueConverters.WPF
 {
@@ -13,12 +15,12 @@ namespace ValueConverters.WPF
     {
         public LinkedConverter()
         {
-            Converters.CollectionChanged += ConvertersChanged;
+            Converters = new ObservableCollection<IValueConverter>();
             Descriptors = new ObservableCollection<ConverterDescriptor>();
+            Converters.CollectionChanged += ConvertersChanged;
         }
 
-        private ObservableCollection<IValueConverter> _converters = new ObservableCollection<IValueConverter>();
-        public ObservableCollection<IValueConverter> Converters { get { return _converters; } set { _converters = value; } }
+        public ObservableCollection<IValueConverter> Converters { get; set; }
 
         private ObservableCollection<ConverterDescriptor> Descriptors { get; set; }
 
@@ -66,8 +68,10 @@ namespace ValueConverters.WPF
         private void ConvertersChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             Descriptors.Clear();
-            foreach (var converter in Converters)
-                Descriptors.Add(new ConverterDescriptor(converter));
+            foreach (var descriptor in Converters.Select(c => new ConverterDescriptor(c)))
+            {
+                Descriptors.Add(descriptor);
+            }
 
             ValidateConverters();
         }
@@ -78,7 +82,7 @@ namespace ValueConverters.WPF
             {
                 var current = Descriptors[i];
                 var next = Descriptors[i + 1];
-                if (!current.TargetType.Equals(next.SourceType))
+                if (current.TargetType != next.SourceType)
                 {
                     throw new ConverterTypesMismatchException(String.Format("SourceType of {0} does not match TargetType of {1}", next.SourceType.Name, current.TargetType.Name));
                 }
@@ -92,16 +96,15 @@ namespace ValueConverters.WPF
         public ConverterTypesMismatchException(string message) : base(message) { }
         public ConverterTypesMismatchException(string message, Exception inner) : base(message, inner) { }
     }
-
+    
     internal class ConverterDescriptor
     {
         public ConverterDescriptor(IValueConverter converter)
         {
-            var attributes = converter.GetType().GetCustomAttributes(typeof(ValueConverterAttribute), false);
-            if (!attributes.Any())
+            var attribute = converter.GetType().GetCustomAttributes<ValueConversionAttribute>(false).SingleOrDefault();
+            if(attribute == null)
                 throw new Exception("Converter must have a ValueConverterAttribute to be wrapped in a descriptor");
 
-            var attribute = attributes.Single() as ValueConverterAttribute;
             TargetType = attribute.TargetType;
             SourceType = attribute.SourceType;
             Converter = converter;

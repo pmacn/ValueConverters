@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace ValueConverters.WPF
+namespace ValueConverters
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    public sealed class ValueConverterAttribute : Attribute
+    sealed class ValueConversionAttribute : Attribute
     {
         private readonly Type _sourceType;
 
         private readonly Type _targetType;
 
-        public ValueConverterAttribute(Type sourceType, Type targetType)
+        public ValueConversionAttribute(Type sourceType, Type targetType)
         {
             _sourceType = sourceType;
             _targetType = targetType;

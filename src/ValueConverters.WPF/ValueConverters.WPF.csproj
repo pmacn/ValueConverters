@@ -40,13 +40,20 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BooleanInversionConverter.cs" />
+    <Compile Include="BooleanToBrushConverter.cs" />
     <Compile Include="BooleanToVisibilityConverter.cs" />
     <Compile Include="LinkedConverter.cs" />
-    <Compile Include="ValueConverterAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\externals\ReflectionExtensions\src\ReflectionExtensions\ReflectionExtensions.csproj">
+      <Project>{f00c5b87-2b18-4c4f-a1bf-8374ff801ff4}</Project>
+      <Name>ReflectionExtensions %28ReflectionExtensions\ReflectionExtensions%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

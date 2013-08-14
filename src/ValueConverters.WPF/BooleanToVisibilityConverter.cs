@@ -4,29 +4,31 @@ using System.Windows.Data;
 
 namespace ValueConverters.WPF
 {
-    [ValueConverter(typeof(bool), typeof(Visibility))]
+    [ValueConversion(typeof(bool), typeof(Visibility))]
     public class BooleanToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (!targetType.Equals(typeof(Visibility)))
-                throw new InvalidOperationException("Target type has to be Visibility");
+            var expectedTargetType = typeof(Visibility);
+            if (!targetType.Equals(expectedTargetType))
+                throw new InvalidOperationException("Expected targetType " + expectedTargetType.Name + " but was " + targetType.Name);
 
-            if (!(value is bool))
-                throw new ArgumentException("value must be a boolean");
+            if (value is bool)
+                return (bool)value ? Visibility.Visible : Visibility.Collapsed;
 
-            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+            throw new ArgumentException("value must be a boolean");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (!targetType.Equals(typeof(bool)))
-                throw new InvalidOperationException("Target type has to be bool");
+            var expectedTargetType = typeof(bool);
+            if (targetType != expectedTargetType)
+                throw new InvalidOperationException("Expected targetType " + expectedTargetType.Name + " but was " + targetType.Name);
 
-            if (!(value is Visibility))
-                throw new ArgumentException("value must be of type Visibility");
+            if (value is Visibility)
+                return (Visibility)value == Visibility.Visible;
 
-            return (Visibility)value == Visibility.Visible;
+            throw new ArgumentException("value must be of type Visibility");
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.WPF", "ValueConverters.WPF\ValueConverters.WPF.csproj", "{813E8695-A9F8-4F2A-A60C-701775EC8ADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.SL", "ValueConverters.SL\ValueConverters.SL.csproj", "{1597CAA6-2844-4135-A1DB-D56BECB28E3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.WP8", "ValueConverters.WP8\ValueConverters.WP8.csproj", "{B28DE24E-9136-4B0F-81C3-07AD91AD6AE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{813E8695-A9F8-4F2A-A60C-701775EC8ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{813E8695-A9F8-4F2A-A60C-701775EC8ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{813E8695-A9F8-4F2A-A60C-701775EC8ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{813E8695-A9F8-4F2A-A60C-701775EC8ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1597CAA6-2844-4135-A1DB-D56BECB28E3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1597CAA6-2844-4135-A1DB-D56BECB28E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1597CAA6-2844-4135-A1DB-D56BECB28E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1597CAA6-2844-4135-A1DB-D56BECB28E3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

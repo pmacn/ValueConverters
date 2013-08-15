@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace ValueConverters.WPF
+namespace ValueConverters
 {
     [ValueConversion(typeof(bool), typeof(Visibility))]
     public class BooleanToVisibilityConverter : IValueConverter
@@ -10,7 +10,7 @@ namespace ValueConverters.WPF
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             var expectedTargetType = typeof(Visibility);
-            if (!targetType.Equals(expectedTargetType))
+            if (targetType != expectedTargetType)
                 throw new InvalidOperationException("Expected targetType " + expectedTargetType.Name + " but was " + targetType.Name);
 
             if (value is bool)

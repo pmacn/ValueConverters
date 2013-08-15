@@ -1,14 +1,13 @@
-﻿using System;
+﻿using ReflectionExtensions;
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Markup;
-using ReflectionExtensions;
 
-
-namespace ValueConverters.WPF
+namespace ValueConverters
 {
     [ContentProperty("Converters")]
     public class LinkedConverter : IValueConverter
@@ -30,10 +29,10 @@ namespace ValueConverters.WPF
                 return value;
 
             var expectedTargetType = Descriptors.Last().TargetType;
-            if (!targetType.Equals(expectedTargetType))
+            if (targetType != expectedTargetType)
                 throw new ArgumentException(String.Format("TargetType is {0}, expected {1}", targetType.Name, expectedTargetType.Name));
 
-            return GroupConvert(value, targetType, parameter, culture);
+            return GroupConvert(value, parameter, culture);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -42,27 +41,25 @@ namespace ValueConverters.WPF
                 return value;
             
             var expectedTargetType = Descriptors.First().SourceType;
-            if (!targetType.Equals(expectedTargetType))
+            if (targetType != expectedTargetType)
                 throw new ArgumentException(String.Format("TargetType is {0}, expected {1}", targetType.Name, expectedTargetType.Name));
 
-            return GroupConvertBack(value, targetType, parameter, culture);
+            return GroupConvertBack(value, parameter, culture);
         }
 
-        private object GroupConvert(object value, Type targetType, object parameter, CultureInfo culture)
+        private object GroupConvert(object value, object parameter, CultureInfo culture)
         {
-            object intermediateValue = value;
-            foreach (var descriptor in Descriptors)
-            {
-                intermediateValue = descriptor.Converter.Convert(intermediateValue, descriptor.TargetType, parameter, culture);
-            }
-
-            return intermediateValue;
+            return Descriptors.Aggregate(value,
+                                         (current, descriptor) =>
+                                         descriptor.Converter.Convert(current, descriptor.TargetType, parameter, culture));
         }
 
-        private object GroupConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        private object GroupConvertBack(object value, object parameter, CultureInfo culture)
         {
-            // TODO : Need to implement this
-            throw new NotImplementedException();
+            return Descriptors.Reverse()
+                              .Aggregate(value,
+                                         (current, descriptor) =>
+                                         descriptor.Converter.ConvertBack(current, descriptor.SourceType, parameter, culture));
         }
 
         private void ConvertersChanged(object sender, NotifyCollectionChangedEventArgs e)

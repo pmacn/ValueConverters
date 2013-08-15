@@ -7,7 +7,7 @@
     <ProjectGuid>{813E8695-A9F8-4F2A-A60C-701775EC8ADF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ValueConverters.WPF</RootNamespace>
+    <RootNamespace>ValueConverters</RootNamespace>
     <AssemblyName>ValueConverters.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

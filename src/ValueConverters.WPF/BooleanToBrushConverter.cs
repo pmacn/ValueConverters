@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ReflectionExtensions;
+using System;
 using System.Windows.Data;
 using System.Windows.Media;
-using ReflectionExtensions;
 
-namespace ValueConverters.WPF
+namespace ValueConverters
 {
     [ValueConversion(typeof(bool), typeof(Brush))]
     public class BooleanToBrushConverter : IValueConverter
@@ -29,6 +25,7 @@ namespace ValueConverters.WPF
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            // Feels like it doesn't really make sense to have a convert back for this
  	        throw new NotImplementedException();
         }
     }

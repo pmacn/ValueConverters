@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionExtensions.SL", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionExtensions.WP8", "..\externals\ReflectionExtensions\src\ReflectionExtensions.WP8\ReflectionExtensions.WP8.csproj", "{DF24CA4B-D829-4EB5-9EC6-6C99DD4BD634}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{22EBD824-0FAC-47F4-B025-9E8C6815792A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.Tests", "ValueConverters.Tests\ValueConverters.Tests.csproj", "{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{DF24CA4B-D829-4EB5-9EC6-6C99DD4BD634}.Release|ARM.Build.0 = Release|ARM
 		{DF24CA4B-D829-4EB5-9EC6-6C99DD4BD634}.Release|x86.ActiveCfg = Release|x86
 		{DF24CA4B-D829-4EB5-9EC6-6C99DD4BD634}.Release|x86.Build.0 = Release|x86
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,5 +101,6 @@ Global
 		{F00C5B87-2B18-4C4F-A1BF-8374FF801FF4} = {30511E54-8365-4D60-819B-092006677D3C}
 		{7B7A3BE7-2FEE-476E-9A3F-305F4FF487BE} = {30511E54-8365-4D60-819B-092006677D3C}
 		{DF24CA4B-D829-4EB5-9EC6-6C99DD4BD634} = {30511E54-8365-4D60-819B-092006677D3C}
+		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091} = {22EBD824-0FAC-47F4-B025-9E8C6815792A}
 	EndGlobalSection
 EndGlobal

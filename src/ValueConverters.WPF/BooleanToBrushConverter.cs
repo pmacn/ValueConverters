@@ -14,7 +14,7 @@ namespace ValueConverters
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (!targetType.Implements<Brush>(ImplementationFlags.Concrete))
+            if (!targetType.Implements<Brush>())
                 throw new ArgumentException("Expected targetType Brush but was " + targetType.Name);
 
             if (value is bool)

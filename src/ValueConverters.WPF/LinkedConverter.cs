@@ -25,8 +25,17 @@ namespace ValueConverters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if(targetType == null) throw new ArgumentNullException("targetType");
+
             if (!Descriptors.Any())
+            {
+                if (!targetType.IsInstanceOfType(value))
+                {
+                    throw new ArgumentException("Empty LinkedConverter must return 'value' which is of type " + value.GetType().Name + " but targetType is " + targetType.Name);
+                }
+
                 return value;
+            }
 
             var expectedTargetType = Descriptors.Last().TargetType;
             if (targetType != expectedTargetType)
@@ -37,8 +46,15 @@ namespace ValueConverters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(!Descriptors.Any())
+            if (!Descriptors.Any())
+            {
+                if (!targetType.IsInstanceOfType(value))
+                {
+                    throw new ArgumentException("Empty LinkedConverter must return 'value' which is of type " + value.GetType().Name + " but targetType is " + targetType.Name);
+                }
+
                 return value;
+            }
             
             var expectedTargetType = Descriptors.First().SourceType;
             if (targetType != expectedTargetType)
@@ -87,6 +103,9 @@ namespace ValueConverters
         }
     }
 
+#if !SILVERLIGHT 
+    [Serializable]
+#endif
     public class ConverterTypesMismatchException : Exception
     {
         public ConverterTypesMismatchException() { }

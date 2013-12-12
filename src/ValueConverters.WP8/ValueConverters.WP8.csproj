@@ -101,9 +101,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\externals\ReflectionExtensions\src\ReflectionExtensions.WP8\ReflectionExtensions.WP8.csproj">
-      <Project>{DF24CA4B-D829-4EB5-9EC6-6C99DD4BD634}</Project>
-      <Name>ReflectionExtensions.WP8</Name>
+    <ProjectReference Include="..\..\externals\ReflectionExtensions\src\ReflectionExtensions\ReflectionExtensions.csproj">
+      <Project>{98942880-4EAF-4689-9E7F-C2C7A7D9752E}</Project>
+      <Name>ReflectionExtensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

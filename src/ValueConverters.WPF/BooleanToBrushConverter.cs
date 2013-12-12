@@ -1,4 +1,5 @@
-﻿using ReflectionExtensions;
+﻿using EnsureThat;
+using ReflectionExtensions;
 using System;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -14,13 +15,10 @@ namespace ValueConverters
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (!targetType.Implements<Brush>())
-                throw new ArgumentException("Expected targetType Brush but was " + targetType.Name);
+            Ensure.That(targetType, "targetType").Is<Brush>();
+            Ensure.ThatTypeFor(value, "value").IsBool();
 
-            if (value is bool)
-                return (bool)value ? TrueBrush : FalseBrush;
-
-            throw new ArgumentException("Expected value of type bool but was " + value.GetType().Name);
+            return (bool)value ? TrueBrush : FalseBrush;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

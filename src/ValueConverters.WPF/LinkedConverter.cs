@@ -1,4 +1,5 @@
-﻿using ReflectionExtensions;
+﻿using EnsureThat;
+using ReflectionExtensions;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -25,7 +26,7 @@ namespace ValueConverters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(targetType == null) throw new ArgumentNullException("targetType");
+            Ensure.That(targetType).IsNotNull();
 
             if (!Descriptors.Any())
             {
@@ -46,6 +47,8 @@ namespace ValueConverters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Ensure.That(targetType).IsNotNull();
+
             if (!Descriptors.Any())
             {
                 if (!targetType.IsInstanceOfType(value))

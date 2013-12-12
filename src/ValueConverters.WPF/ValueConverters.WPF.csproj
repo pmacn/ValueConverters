@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EnsureThat, Version=1.0.0.37966, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ensure.That.1.0.0\lib\portable-win+net40+sl40+wp71\EnsureThat.dll\EnsureThat.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -47,6 +51,7 @@
     <Compile Include="BooleanToBrushConverter.cs" />
     <Compile Include="BooleanToVisibilityConverter.cs" />
     <Compile Include="LinkedConverter.cs" />
+    <Compile Include="ParamTypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +59,9 @@
       <Project>{f00c5b87-2b18-4c4f-a1bf-8374ff801ff4}</Project>
       <Name>ReflectionExtensions %28ReflectionExtensions\ReflectionExtensions%29</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

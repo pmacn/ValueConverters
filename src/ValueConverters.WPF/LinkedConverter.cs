@@ -121,7 +121,7 @@ namespace ValueConverters
         public ConverterDescriptor(IValueConverter converter)
         {
             var attribute = converter.GetType().GetCustomAttributes<ValueConversionAttribute>(false).SingleOrDefault();
-            if(attribute == null)
+            if (attribute == null)
                 throw new Exception("Converter must have a ValueConverterAttribute to be wrapped in a descriptor");
 
             TargetType = attribute.TargetType;
@@ -131,8 +131,8 @@ namespace ValueConverters
 
         public IValueConverter Converter { get; private set; }
 
-        public Type TargetType { get; set; }
+        public Type TargetType { get; private set; }
 
-        public Type SourceType { get; set; }
+        public Type SourceType { get; private set; }
     }
 }

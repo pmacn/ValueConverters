@@ -1,9 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
+using System.Windows;
 using System.Windows.Data;
 
 namespace ValueConverters.Tests
@@ -40,6 +38,85 @@ namespace ValueConverters.Tests
         public void ConvertBackWithValueNotOfTargetTypeThrows()
         {
             _converter.ConvertBack(value, typeof(bool), null, CultureInfo.CurrentCulture);
+        }
+    }
+
+    [TestFixture]
+    public class GivenOneLinkedConverterWithASpecificTargetType
+    {
+        private LinkedConverter sut;
+
+        [SetUp]
+        public void Setup()
+        {
+            sut = new LinkedConverter();
+            sut.Converters.Add(new ConverterThatConvertsToInt());
+        }
+
+        [Test]
+        [ExpectedException(typeof(ConverterTypesMismatchException))]
+        public void AddingConverterWithTheWrongSourceTypeThrows()
+        {
+            sut.Converters.Add(new ConverterThatConvertsDoubles());
+        }
+    }
+
+    [TestFixture]
+    public class GivenTwoLinkedConverters
+    {
+        private LinkedConverter sut;
+
+        [SetUp]
+        public void Setup()
+        {
+            sut = new LinkedConverter();
+            sut.Converters.Add(new BooleanInversionConverter());
+            sut.Converters.Add(new BooleanToVisibilityConverter());
+        }
+
+        [TestCase(true, Visibility.Collapsed)] 
+        [TestCase(false, Visibility.Visible)]
+        public void ReturnsExpectedResultWhenConverting(bool input, Visibility expected)
+        {
+            var result = sut.Convert(input, typeof (Visibility), null, CultureInfo.CurrentCulture);
+            Assert.That(result, Is.EqualTo(expected)); // false -> true -> Visible
+        }
+
+        [TestCase(Visibility.Collapsed, true)]
+        [TestCase(Visibility.Visible, false)]
+        public void ReturnsExpectedResultWhenConvertingBack(Visibility input, bool expected)
+        {
+            var result = sut.ConvertBack(input, typeof(bool), null, CultureInfo.CurrentCulture);
+            Assert.That(result, Is.EqualTo(expected)); // false -> true -> Visible
+        }
+    }
+
+    [ValueConversion(typeof(int), typeof(int))]
+    public class ConverterThatConvertsToInt : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [ValueConversion(typeof(double), typeof(int))]
+    public class ConverterThatConvertsDoubles : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

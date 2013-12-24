@@ -98,9 +98,6 @@
     <Compile Include="..\ValueConverters.WPF\LinkedConverter.cs">
       <Link>LinkedConverter.cs</Link>
     </Compile>
-    <Compile Include="..\ValueConverters.WPF\ParamTypeExtensions.cs">
-      <Link>ParamTypeExtensions.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +110,9 @@
     <Reference Include="EnsureThat, Version=1.0.0.37966, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ensure.That.1.0.0\lib\portable-win+net40+sl40+wp71\EnsureThat.dll\EnsureThat.dll</HintPath>
+    </Reference>
+    <Reference Include="RequireThat">
+      <HintPath>..\packages\RequireThat.0.9.2.39269\lib\portable-net40+sl50+wp80+win\RequireThat.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
-﻿using EnsureThat;
-using ReflectionExtensions;
+﻿using ReflectionExtensions;
+using RequireThat;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -26,7 +26,7 @@ namespace ValueConverters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Ensure.That(targetType).IsNotNull();
+            Require.That(targetType, "targetType").IsNotNull();
 
             if (!Descriptors.Any())
             {
@@ -39,15 +39,14 @@ namespace ValueConverters
             }
 
             var expectedTargetType = Descriptors.Last().TargetType;
-            if (targetType != expectedTargetType)
-                throw new ArgumentException(String.Format("TargetType is {0}, expected {1}", targetType.Name, expectedTargetType.Name));
+            Require.That(targetType, "targetType").Is(expectedTargetType);
 
             return GroupConvert(value, parameter, culture);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Ensure.That(targetType).IsNotNull();
+            Require.That(targetType).IsNotNull();
 
             if (!Descriptors.Any())
             {
@@ -60,8 +59,7 @@ namespace ValueConverters
             }
             
             var expectedTargetType = Descriptors.First().SourceType;
-            if (targetType != expectedTargetType)
-                throw new ArgumentException(String.Format("TargetType is {0}, expected {1}", targetType.Name, expectedTargetType.Name));
+            Require.That(targetType, "targetType").Is(expectedTargetType);
 
             return GroupConvertBack(value, parameter, culture);
         }

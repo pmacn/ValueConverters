@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Data;
-using EnsureThat;
+using RequireThat;
 
 namespace ValueConverters
 {
@@ -9,16 +9,16 @@ namespace ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            Ensure.That(targetType, "targetType").Is<bool>();
-            Ensure.ThatTypeFor(value).IsBool();
+            Require.That(targetType, "targetType").Is<bool>();
+            Require.That(value, "value").IsOfType<bool>();
 
             return !(bool)value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            Ensure.That(targetType, "targetType").Is<bool>();
-            Ensure.ThatTypeFor(value).IsBool();
+            Require.That(targetType, "targetType").Is<bool>();
+            Require.That(value, "value").IsOfType<bool>();
 
             return !(bool)value;
         }

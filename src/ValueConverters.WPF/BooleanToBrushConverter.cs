@@ -1,4 +1,4 @@
-﻿using EnsureThat;
+﻿using RequireThat;
 using ReflectionExtensions;
 using System;
 using System.Windows.Data;
@@ -15,8 +15,8 @@ namespace ValueConverters
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            Ensure.That(targetType, "targetType").Is<Brush>();
-            Ensure.ThatTypeFor(value, "value").IsBool();
+            Require.That(targetType, "targetType").Is<Brush>();
+            Require.That(value, "value").IsOfType<bool>();
 
             return (bool)value ? TrueBrush : FalseBrush;
         }

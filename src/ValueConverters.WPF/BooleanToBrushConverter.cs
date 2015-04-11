@@ -1,5 +1,4 @@
 ﻿using RequireThat;
-using ReflectionExtensions;
 using System;
 using System.Windows.Data;
 using System.Windows.Media;

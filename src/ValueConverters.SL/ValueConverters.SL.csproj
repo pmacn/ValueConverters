@@ -73,12 +73,6 @@
     <Compile Include="ValueConversionAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\externals\ReflectionExtensions\src\ReflectionExtensions\ReflectionExtensions.csproj">
-      <Project>{98942880-4eaf-4689-9e7f-c2c7a7d9752e}</Project>
-      <Name>ReflectionExtensions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

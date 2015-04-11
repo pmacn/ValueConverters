@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReflectionExtensions", "ReflectionExtensions", "{30511E54-8365-4D60-819B-092006677D3C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{22EBD824-0FAC-47F4-B025-9E8C6815792A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.WPF", "ValueConverters.WPF\ValueConverters.WPF.csproj", "{813E8695-A9F8-4F2A-A60C-701775EC8ADF}"
@@ -12,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.SL", "ValueConverters.SL\ValueConverters.SL.csproj", "{1597CAA6-2844-4135-A1DB-D56BECB28E3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.WP8", "ValueConverters.WP8\ValueConverters.WP8.csproj", "{B28DE24E-9136-4B0F-81C3-07AD91AD6AE8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionExtensions", "..\externals\ReflectionExtensions\src\ReflectionExtensions\ReflectionExtensions.csproj", "{98942880-4EAF-4689-9E7F-C2C7A7D9752E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.Tests", "ValueConverters.Tests\ValueConverters.Tests.csproj", "{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}"
 EndProject
@@ -55,14 +51,6 @@ Global
 		{B28DE24E-9136-4B0F-81C3-07AD91AD6AE8}.Release|ARM.Build.0 = Release|ARM
 		{B28DE24E-9136-4B0F-81C3-07AD91AD6AE8}.Release|x86.ActiveCfg = Release|x86
 		{B28DE24E-9136-4B0F-81C3-07AD91AD6AE8}.Release|x86.Build.0 = Release|x86
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E}.Release|ARM.ActiveCfg = Release|Any CPU
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E}.Release|x86.ActiveCfg = Release|Any CPU
 		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -76,7 +64,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{98942880-4EAF-4689-9E7F-C2C7A7D9752E} = {30511E54-8365-4D60-819B-092006677D3C}
 		{C504A6E6-CA52-4D78-A8DF-FDCD4033A091} = {22EBD824-0FAC-47F4-B025-9E8C6815792A}
 	EndGlobalSection
 EndGlobal

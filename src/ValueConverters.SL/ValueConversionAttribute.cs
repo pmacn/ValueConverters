@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
+    using System;
+
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     sealed class ValueConversionAttribute : Attribute
     {

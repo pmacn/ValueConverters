@@ -1,10 +1,11 @@
-﻿using RequireThat;
-using System;
-using System.Windows.Data;
-using System.Windows.Media;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
+    using System;
+    using System.Globalization;
+    using System.Windows.Data;
+    using System.Windows.Media;
+    using Krav;
+
     [ValueConversion(typeof(bool), typeof(Brush))]
     public class BooleanToBrushConverter : IValueConverter
     {
@@ -12,15 +13,15 @@ namespace ValueConverters
 
         public Brush FalseBrush { get; set; }
 
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Require.That(targetType, "targetType").Is<Brush>();
-            Require.That(value, "value").IsOfType<bool>();
+            RequireThat.ThisHolds(typeof(Brush).IsAssignableFrom(targetType), "targetType");
+            RequireThat.IsOfType<bool>(value, "value");
 
             return (bool)value ? TrueBrush : FalseBrush;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             // Feels like it doesn't really make sense to have a convert back for this
  	        throw new NotImplementedException();

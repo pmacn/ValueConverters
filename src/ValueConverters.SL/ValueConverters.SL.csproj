@@ -46,10 +46,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="RequireThat">
-      <HintPath>..\packages\RequireThat.0.9.2.39269\lib\portable-net40+sl50+wp80+win\RequireThat.dll</HintPath>
+    <Reference Include="Krav.Simple">
+      <HintPath>..\packages\Krav.Simple.0.1.1\lib\portable-net4+sl5+wp8+windows8\Krav.Simple.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core">

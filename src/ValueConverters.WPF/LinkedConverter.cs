@@ -1,14 +1,14 @@
-﻿using RequireThat;
-using System;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Globalization;
-using System.Linq;
-using System.Windows.Data;
-using System.Windows.Markup;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Collections.Specialized;
+    using System.Globalization;
+    using System.Linq;
+    using System.Windows.Data;
+    using System.Windows.Markup;
+    using Krav;
+
     [ContentProperty("Converters")]
     public class LinkedConverter : IValueConverter
     {
@@ -25,7 +25,7 @@ namespace ValueConverters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Require.That(targetType, "targetType").IsNotNull();
+            RequireThat.NotNull(targetType, "targetType");
 
             if (!Descriptors.Any())
             {
@@ -38,14 +38,14 @@ namespace ValueConverters
             }
 
             var expectedTargetType = Descriptors.Last().TargetType;
-            Require.That(targetType, "targetType").Is(expectedTargetType);
+            RequireThat.ThisHolds(expectedTargetType.IsAssignableFrom(targetType), "targetType");
 
             return GroupConvert(value, parameter, culture);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Require.That(targetType).IsNotNull();
+            RequireThat.NotNull(targetType, "targetType");
 
             if (!Descriptors.Any())
             {
@@ -58,7 +58,7 @@ namespace ValueConverters
             }
             
             var expectedTargetType = Descriptors.First().SourceType;
-            Require.That(targetType, "targetType").Is(expectedTargetType);
+            RequireThat.ThisHolds(expectedTargetType.IsAssignableFrom(targetType), "targetType");
 
             return GroupConvertBack(value, parameter, culture);
         }

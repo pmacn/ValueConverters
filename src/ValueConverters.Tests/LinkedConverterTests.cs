@@ -1,11 +1,12 @@
-﻿using System;
-using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
-using Xunit;
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
+    using System;
+    using System.Globalization;
+    using System.Windows;
+    using System.Windows.Data;
+
+    using Xunit;
+
     public class WithEmptyLinkedConverter
     {
         IValueConverter _converter = new LinkedConverter();

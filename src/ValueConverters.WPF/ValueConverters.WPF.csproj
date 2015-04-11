@@ -32,8 +32,9 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="RequireThat">
-      <HintPath>..\packages\RequireThat.0.9.2.39269\lib\portable-net40+sl50+wp80+win\RequireThat.dll</HintPath>
+    <Reference Include="RequireThat, Version=1.0.0.18273, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RequireThat.1.0.0.18273\lib\portable-win+net40+sl50+wp80\RequireThat.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,12 +52,6 @@
     <Compile Include="BooleanToVisibilityConverter.cs" />
     <Compile Include="LinkedConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\externals\ReflectionExtensions\src\ReflectionExtensions\ReflectionExtensions.csproj">
-      <Project>{f00c5b87-2b18-4c4f-a1bf-8374ff801ff4}</Project>
-      <Name>ReflectionExtensions %28ReflectionExtensions\ReflectionExtensions%29</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,100 +1,97 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using Xunit;
+using Xunit.Extensions;
 
 namespace ValueConverters.Tests
 {
-    [TestFixture]
     public class WithEmptyLinkedConverter
     {
         IValueConverter _converter = new LinkedConverter();
         object value = "value";
         
-        [Test]
+        [Fact]
         public void ConvertReturnsOriginalValue()
         {
             var convertedValue = _converter.Convert(value, value.GetType(), null, CultureInfo.CurrentCulture);
-            Assert.AreEqual(value, convertedValue);
+            Assert.Equal(value, convertedValue);
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentException))]
+        [Fact]
         public void ConvertWithValueNotOfTargetTypeThrowsException()
         {
-            _converter.Convert(value, typeof(bool), null, CultureInfo.CurrentCulture);
+            Assert.Throws<ArgumentException>(
+                () => _converter.Convert(value, typeof(bool), null, CultureInfo.CurrentCulture));
         }
 
-        [Test]
+        [Fact]
         public void ConvertBackReturnsOriginalValue()
         {
             var convertedValue = _converter.ConvertBack(value, value.GetType(), null, CultureInfo.CurrentCulture);
-            Assert.AreEqual(value, convertedValue);
+            Assert.Equal(value, convertedValue);
         }
 
-        [Test]
-        [ExpectedException(typeof(ArgumentException))]
+        [Fact]
         public void ConvertBackWithValueNotOfTargetTypeThrows()
         {
-            _converter.ConvertBack(value, typeof(bool), null, CultureInfo.CurrentCulture);
+            Assert.Throws<ArgumentException>(
+                () => _converter.ConvertBack(value, typeof(bool), null, CultureInfo.CurrentCulture));
         }
     }
 
-    [TestFixture]
     public class GivenOneLinkedConverterWithASpecificTargetType
     {
         private LinkedConverter sut;
 
-        [SetUp]
-        public void Setup()
+        public GivenOneLinkedConverterWithASpecificTargetType()
         {
             sut = new LinkedConverter();
             sut.Converters.Add(new ConverterThatConvertsToInt());
         }
 
-        [Test]
-        [ExpectedException(typeof(ConverterTypesMismatchException))]
+        [Fact]
         public void AddingConverterWithTheWrongSourceTypeThrows()
         {
-            sut.Converters.Add(new ConverterThatConvertsDoubles());
+            Assert.Throws<ConverterTypesMismatchException>(
+                () => sut.Converters.Add(new ConverterThatConvertsDoubles()));
         }
     }
 
-    [TestFixture]
     public class GivenTwoLinkedConverters
     {
         private LinkedConverter sut;
 
-        [SetUp]
-        public void Setup()
+        public GivenTwoLinkedConverters()
         {
             sut = new LinkedConverter();
             sut.Converters.Add(new BooleanInversionConverter());
             sut.Converters.Add(new BooleanToVisibilityConverter());
         }
 
-        [TestCase(true, Visibility.Collapsed)] 
-        [TestCase(false, Visibility.Visible)]
+        [Theory]
+        [InlineData(true, Visibility.Collapsed)] 
+        [InlineData(false, Visibility.Visible)]
         public void ReturnsExpectedResultWhenConverting(bool input, Visibility expected)
         {
             var result = sut.Convert(input, typeof (Visibility), null, CultureInfo.CurrentCulture);
-            Assert.That(result, Is.EqualTo(expected)); // false -> true -> Visible
+            Assert.Equal(expected, result);
         }
 
-        [TestCase(Visibility.Collapsed, true)]
-        [TestCase(Visibility.Visible, false)]
+        [Theory]
+        [InlineData(Visibility.Collapsed, true)]
+        [InlineData(Visibility.Visible, false)]
         public void ReturnsExpectedResultWhenConvertingBack(Visibility input, bool expected)
         {
             var result = sut.ConvertBack(input, typeof(bool), null, CultureInfo.CurrentCulture);
-            Assert.That(result, Is.EqualTo(expected)); // false -> true -> Visible
+            Assert.Equal(expected, result);
         }
     }
 
     [ValueConversion(typeof(int), typeof(int))]
     public class ConverterThatConvertsToInt : IValueConverter
     {
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();

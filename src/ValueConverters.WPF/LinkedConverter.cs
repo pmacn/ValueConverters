@@ -1,5 +1,4 @@
-﻿using ReflectionExtensions;
-using RequireThat;
+﻿using RequireThat;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -118,7 +117,7 @@ namespace ValueConverters
     {
         public ConverterDescriptor(IValueConverter converter)
         {
-            var attribute = converter.GetType().GetCustomAttributes<ValueConversionAttribute>(false).SingleOrDefault();
+            var attribute = (ValueConversionAttribute)converter.GetType().GetCustomAttributes(typeof(ValueConversionAttribute), true).SingleOrDefault();
             if (attribute == null)
                 throw new Exception("Converter must have a ValueConverterAttribute to be wrapped in a descriptor");
 

@@ -54,12 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\externals\ReflectionExtensions\src\ReflectionExtensions\ReflectionExtensions.csproj">
-      <Project>{f00c5b87-2b18-4c4f-a1bf-8374ff801ff4}</Project>
-      <Name>ReflectionExtensions %28ReflectionExtensions\ReflectionExtensions%29</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
